@@ -2,7 +2,7 @@
 
 Picture a slot machine with a lever. Imagine that pulling the lever yields random amount of money, e.g: first pull give you 10$, the next one 2$, etc. And let's say that, despite the random reward given, each lever has a hidden value $q$ that denotes the true value of pulling it. 
 
-Now let's say there are n number of slot machine, each with varying amount of rewards. We want to maximize the amount of money we get from pulling the levers, say, 100 times. How do we decide which lever to pull?
+Now let's say there are n number of slot machines, each with varying amount of rewards. We want to maximize the amount of money we get from pulling the levers, say, 100 times. How do we decide which lever to pull?
 
 ## Action-Value Methods
 
