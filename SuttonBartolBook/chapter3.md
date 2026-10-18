@@ -20,3 +20,23 @@ This allow us to get finite value of $G$ even when the task continues forever. M
 
 ## Markov Decision Process
 
+It is logical to think that each prior state, action, and reward taken by the agent should affect the future state, action, and reward. However, it is quite impractical if we need to store every state, action, and reward the agent taken up until the current point in order to know what happens next. 
+
+A better approach would be to define a state in which the information of the current state is enough to determine the current situation and what happens next. For example, on a game of chess, in order to make a decision, we don't need to know each steps chosen by both players up to the current point; we just need to know how the current position of the pieces on the board. A state that satisfy this criteria is said to have *Markov Property*. 
+
+Furthermore, since current state is enough to tell us about the overall condition of the environment, we can derive couple of things:
+
+1. The whole environment:
+
+$$p(s',r \mid s,a) = \Pr\{S_{t+1}=s',\,R_{t+1}=r \mid S_t=s,\,A_t=a\}$$
+
+2. Expected reward for a state-action pair. The average reward from taking $a$ in $s$, ignoring where the agent lands:
+
+$$r(s,a) = \mathbb{E}[R_{t+1} \mid S_t=s,A_t=a] = \sum_{r\in\mathcal{R}} r \sum_{s'\in\mathcal{S}} p(s',r \mid s,a)$$
+
+3. State-transition probabilities. The probability of landing in $s'$, ignoring the reward. 
+$$p(s' \mid s,a) = \Pr\{S_{t+1}=s' \mid S_t=s,A_t=a\} = \sum_{r\in\mathcal{R}} p(s',r \mid s,a)$$
+
+4. Expected reward for a state-action-next-state triple. The average reward given that the agent landed in $s'$:
+
+$$r(s,a,s') = \mathbb{E}[R_{t+1} \mid S_t=s,A_t=a,S_{t+1}=s'] = \frac{\sum_{r\in\mathcal{R}} r\,p(s',r \mid s,a)}{p(s' \mid s,a)}$$
